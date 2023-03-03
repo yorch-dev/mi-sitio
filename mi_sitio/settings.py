@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'crispy_bootstrap5',
+    'inicio',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+LOGIN_REDIRECT_URL = "inicio"
+LOGOUT_REDIRECT_URL = "inicio"
+LOGIN_URL = 'login'
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "jltm.dev@gmail.com"
+EMAIL_HOST_PASSWORD = 'soptclnmoevobonx'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
