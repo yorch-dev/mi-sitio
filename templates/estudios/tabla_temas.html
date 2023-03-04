@@ -1,0 +1,24 @@
+{% comment %} Tabla de temas {% endcomment %}
+
+<table class="table table-secondary table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Fecha</th>
+            {% for s in sesiones %}
+                <th scope="col">Sesión {{ s }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for tema in lista_temas %}
+            <tr>
+                <th scope="row">{{tema.0|date:"D j"}}</th>
+                {% for t in tema %}
+                    {% if t != tema.0 %}
+                        <td>{{t}}</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

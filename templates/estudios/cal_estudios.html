@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Calendario estudios
+{% endblock title %}
+
+{% block body %}
+
+<div class="container text-center"><h1>Calendario estudios</h1></div>
+
+{% if temas_por_dia %}
+  <div class="container text-center">
+    <h2 class="mb-2">Hoy: {{hoy | date:'l j'}} de {{hoy | date:'F'}}</h2>
+    {% if temas_por_dia.0.0 not in libres %}
+      <div class="container text-start col-6">
+        <ul class="list-unstyled">
+          {% for tema in temas_por_dia.0 %}
+            {% if forloop.counter0 != 0 %}
+                {% if tema %}
+                  <li class="ps-5"> <input type="checkbox"> Sesión {{ forloop.counter0 }}: {{ tema }} </li>
+                {% endif%}
+            {% endif%}
+          {% endfor %}
+        </ul>
+      </div>
+    {% else %}
+      <h2>Libre</h2>
+    {% endif %}
+  </div>
+
+
+  <div class="container mt-3">
+    {% include 'estudios/tabla_temas.html' with lista_temas=temas_por_dia sesiones=n_sesiones %}
+  </div>
+
+{% else %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 offset-md-3">
+        <div class="card p-3 mx-auto bg-light bg-gradient">
+          <h3 class="text-center">Temas no configurados</h3>
+          <p>Revisar configuración de temas en <a href="/admin/estudios/">admin/estudios/</a></p>
+        </div>      
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% endblock body %}
