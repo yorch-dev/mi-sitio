@@ -3,3 +3,5 @@ whitenoise==6.3.*
 django-crispy-forms==2.*
 crispy-bootstrap5==0.*
 matplotlib==3.6.*
+pandas==1.5.*
+regex
