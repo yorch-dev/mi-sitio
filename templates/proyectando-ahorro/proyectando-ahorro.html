@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% crispy form form.helper %}
 
 {% block title %}
   Proyectando ahorro
@@ -7,28 +9,52 @@
 {% block body %}
 {% load crispy_forms_tags %}
 
-  <div class="container p-2">
+  <div class="container-sm-fluid container-lg">
     <div class='row'>
-      <div class='col-sm-12 col-md-3'>
-        <form method="post" class="inline-labels">
-          {% csrf_token %}
-          {{ form | crispy }}
-        <input type="submit" value="Enviar">
+      <div class='col-sm-12 col-md-4 ps-2'>
+          {% crispy form %}
       </div>
-      <div class='col-sm-12 col-md-9'>
-        {% if producto %}
+
+      <div class='col-sm-12 col-md-8 pe-2'>
+        
+        {% comment %} título {% endcomment %}
+        {% if request.method == 'POST' %}
           <h2 class="text-center">Proyección para {{ producto }}</h2>
+          
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" data-bs-toggle="pill" href="#pie">Gráfica</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="pill" href="#df">Tabla</a>
+            </li>
+          </ul>
+          
+          <div class="tab-content">
+            <div id="pie" class="container tab-pane active">
+              {% comment %} pie {% endcomment %}
+              <div>
+                {% if pie %}
+                <img src="data:image/png;base64,{{ pie }}" alt="pie chart">
+                {% endif %}
+              </div>
+            </div>
+            <div id="df" class="container tab-pane fade">
+              {% comment %} df {% endcomment %}
+              <div>
+                {% if df %}
+                {% autoescape off %}
+                {{ df }}
+                {% endautoescape %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          
         {% endif %}
-        <div>
-          {% if pie %}
-            <img src="data:image/png;base64,{{ pie }}" alt="pie chart">
-          {% endif %}
-        </div>
-        {% autoescape off %}
-          {{ df }}
-        {% endautoescape %}
+          
       </div>
     </div>
   </div>
-
+    
 {% endblock body %}
