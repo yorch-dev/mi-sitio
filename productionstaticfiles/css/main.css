@@ -5,3 +5,13 @@ body {
 .asteriskField {
     display: none;
 }
+
+.nav-tabs .nav-link.active {
+    background-color: black;
+}
+
+.table-wrapper {
+    max-height: 70vh;
+    overflow: auto;
+    display:inline-block;
+  }

@@ -24,13 +24,13 @@ class Proyeccion(forms.Form):
         self.helper = FormHelper()
         self.helper.form_id = 'id-exampleForm'
         self.helper.form_class = 'form-horizontal'
-        self.helper.label_class = 'col-5 color-white'
+        self.helper.label_class = 'col-5 text-white h3'
         self.helper.field_class = 'col-7'
         self.helper.form_method = 'post'
         #self.helper.form_action = 'submit_survey'
 
         submit = Submit("submit", "Enviar")
-        submit.field_classes = 'btn btn-dark btn-block'
+        submit.field_classes = 'btn btn-dark float-end'
 
         #self.helper.add_input(submit)
 

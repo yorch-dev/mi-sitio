@@ -11,7 +11,7 @@
 
   <div class="container-sm-fluid container-lg">
     <div class='row'>
-      <div class='col-sm-12 col-md-4 ps-2'>
+      <div class='col-sm-12 col-md-4 ps-2 pt-lg-5 mt-lg-5'>
           {% crispy form %}
       </div>
 
@@ -21,17 +21,17 @@
         {% if request.method == 'POST' %}
           <h2 class="text-center">Proyección para {{ producto }}</h2>
           
-          <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a class="nav-link active" data-bs-toggle="pill" href="#pie">Gráfica</a>
+          <ul class="nav nav-tabs justify-content-center rounded">
+            <li class="nav-item border">
+              <a class="nav-link text-white active" data-bs-toggle="pill" href="#pie">Gráfica</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="pill" href="#df">Tabla</a>
+            <li class="nav-item border">
+              <a class="nav-link text-white" data-bs-toggle="pill" href="#df">Tabla</a>
             </li>
           </ul>
           
           <div class="tab-content">
-            <div id="pie" class="container tab-pane active">
+            <div id="pie" class="container tab-pane fade show active">
               {% comment %} pie {% endcomment %}
               <div>
                 {% if pie %}
@@ -39,9 +39,9 @@
                 {% endif %}
               </div>
             </div>
-            <div id="df" class="container tab-pane fade">
+            <div id="df" class="container tab-pane fade show">
               {% comment %} df {% endcomment %}
-              <div>
+              <div class="table-wrapper">
                 {% if df %}
                 {% autoescape off %}
                 {{ df }}

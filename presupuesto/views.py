@@ -49,7 +49,7 @@ def ahorro(request):
             df['Acumulado'] = np.cumsum(df['Valor cuota'] + df['Ganancia'])
 
             df_html = df.to_html(index = False)
-            clases_bstp = 'table table-responsive-md table-dark table-striped text-center'
+            clases_bstp = 'table table-dark table-striped text-center'
             clean_df_html = re.sub(r'<tr.*>', '<tr>', df_html.replace('border="1" class="dataframe', f'class="{clases_bstp}'))
             
             pie_chart = crear_pie_chart(df)
