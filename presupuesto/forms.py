@@ -1,16 +1,17 @@
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout
-from crispy_forms.layout import Layout, Fieldset, Row, Column
+from crispy_forms.layout import Layout, Div, HTML, Field
 
 class Proyeccion(forms.Form):
-    nombre = forms.CharField(max_length=20, required=False)
+
+    nombre = forms.CharField(label="Nombre proyecto", max_length=20, required=True)
     valor = forms.IntegerField(required=True)
-    duracion = forms.IntegerField(required=True)
-    fecha_inicio = forms.DateField(required=True)
-    ciclo_inversion = forms.IntegerField(required=True)
-    t_int_esperada = forms.FloatField(required=True)
-    t_int_inversion = forms.FloatField(required=True)
+    duracion = forms.FloatField(label='Plazo en años', required=True, max_value=20)
+    fecha_inicio = forms.DateField(required=True, widget=forms.TextInput(attrs={'type': 'date'} ))
+    ciclo_inversion = forms.IntegerField(label='Días ciclo inversión', required=True)
+    t_int_esperada = forms.FloatField(label='Tasa cambio proyectada', required=True)
+    t_int_inversion = forms.FloatField(label='Tasa interés banco', required=True)
     precision = forms.TypedChoiceField(
         label = "Precisión",
         choices = ((0, "Baja"), (1, "Normal"), (2, "Alta"), (3, "Muy alta")),
@@ -23,9 +24,9 @@ class Proyeccion(forms.Form):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_id = 'id-exampleForm'
-        self.helper.form_class = 'form-horizontal'
-        self.helper.label_class = 'col-5 text-white h3'
-        self.helper.field_class = 'col-7'
+        self.helper.form_class = 'form-horizontal was-validated'
+        self.helper.label_class = 'col-6 text-white small h4'
+        self.helper.field_class = 'col-6'
         self.helper.form_method = 'post'
         #self.helper.form_action = 'submit_survey'
 
@@ -35,13 +36,74 @@ class Proyeccion(forms.Form):
         #self.helper.add_input(submit)
 
         self.helper.layout = Layout(
-            'nombre',
-            'valor',
-            'duracion',
-            'fecha_inicio',
-            'ciclo_inversion',
-            't_int_esperada',
-            't_int_inversion',
-            'precision'
+            Field('nombre',
+                css_class="small",
+                placeholder='Vacaciones',
+                autocomplete='off',
+                data_bs_toggle="popover",
+                data_bs_trigger="hover",
+                title="Producto o proyecto",
+                data_bs_content='Nombre o título de tu proyecto'
+            ),
+            Field('valor',
+                css_class="small",
+                placeholder='$1.200.000',
+                autocomplete='off',
+                data_bs_toggle="popover",
+                data_bs_trigger="hover",
+                title="Valor actual",
+                data_bs_content="Valor actual del producto o proyecto"
+            ),
+            Field('t_int_esperada',
+                css_class="small text-end",
+                placeholder='0.01',
+                autocomplete='off',
+                data_bs_toggle="popover",
+                data_bs_trigger="hover",
+                title="Tasa interés",
+                data_bs_content="Valor actual del producto o proyecto"
+            ),
+            Field('duracion',
+                css_class="small text-end",
+                placeholder='1',
+                autocomplete='off',
+                data_bs_toggle="popover",
+                data_bs_trigger="hover",
+                title="Duración del proyecto",
+                data_bs_content="Duración en años del proyecto"
+            ),
+            Field('fecha_inicio',
+                css_class="small",
+                data_bs_toggle="popover",
+                data_bs_trigger="hover",
+                title="Fecha inicio",
+                data_bs_content="Día del primer depósito a plazo"
+            ),
+            Field(
+                'ciclo_inversion',
+                css_class="small text-end",
+                placeholder='45',
+                autocomplete='off',
+                data_bs_toggle="popover",
+                data_bs_trigger="hover",
+                title="Duración en días del ciclo de inversión",
+                data_bs_content="Duración del ciclo en días, de los depósitos a plazo"
+            ),
+            Field('t_int_inversion',
+                css_class="small text-end",
+                placeholder='0.007',
+                autocomplete='off',
+                data_bs_toggle="popover",
+                data_bs_trigger="hover",
+                title="Tasa interés depósito a plazo",
+                data_bs_content="Interés mensual del depósito a plazo"
+            ),
+            Field('precision',
+                css_class="small",
+                data_bs_toggle="popover",
+                data_bs_trigger="hover",
+                title="Precisión del cálculo opcional",
+                data_bs_content="En plazos y altos puede afectar rendimiento, pero entrega un resultado con menos sobrante respecto de lo buscado"
+            ),
         )
         self.helper.layout.append(submit)

@@ -34,6 +34,17 @@
             <div id="pie" class="container tab-pane fade show active">
               {% comment %} pie {% endcomment %}
               <div>
+                {% comment %} st.write(f'# *Resumen proyecto {nombre_producto}*')
+                mygrid = make_grid(2, 2)
+
+                mygrid[1][0].write(f" El objetivo es: ${formatNumber(int(monto_objetivo), 0)}")
+                mygrid[1][0].write(f" El resultado es: ${formatNumber(int(df_padp['Valor cuota'].sum() + df_padp['Ganancia'].sum()), 0)}")
+                mygrid[1][0].write("\tAcumulado con cuota personal: ${}".format(formatNumber(int(df_padp['Valor cuota'].sum()), 0)))
+                mygrid[1][0].write("\tTasa de interés ahorro personal {}%".format(round(tasa_int_personal * 100, 2)))
+                mygrid[1][0].write("\tGanancia inversión: ${}".format(formatNumber(int(df_padp['Ganancia'].sum()), 0)))
+                mygrid[1][0].write(f" El saldo: ${formatNumber(int((df_padp['Valor cuota'].sum() + df_padp['Ganancia'].sum()) - monto_objetivo), 0)}") {% endcomment %}
+              </div>
+              <div>
                 {% if pie %}
                 <img src="data:image/png;base64,{{ pie }}" alt="pie chart">
                 {% endif %}
