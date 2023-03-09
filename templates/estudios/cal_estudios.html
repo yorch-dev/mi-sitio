@@ -17,7 +17,8 @@
           {% for tema in temas_por_dia.0 %}
             {% if forloop.counter0 != 0 %}
                 {% if tema %}
-                  <li class="ps-5"> <input type="checkbox"> Sesión {{ forloop.counter0 }}: {{ tema }} </li>
+                  <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
+                  <label class="form-check-label" for="firstCheckbox">Sesión {{ forloop.counter0 }}: {{ tema }}</label>
                 {% endif%}
             {% endif%}
           {% endfor %}

@@ -9,16 +9,22 @@
 {% block body %}
 {% load crispy_forms_tags %}
 
-  <div class="container-sm-fluid container-lg">
-    <div class='row'>
-      <div class='col-sm-12 col-md-4 ps-2 pt-lg-5 mt-lg-5'>
-          {% crispy form %}
-      </div>
+  {% if request.method == 'GET' %}
+    <div class="container">
+      {% crispy form %}
+    </div>
+  {% endif %}
+
+  {% if request.method == 'POST' %}
+    <div class="container-sm-fluid container-lg">
+      <div class='row'>
+        <div class='col-sm-12 col-md-4 pt-md-2 ps-2 pt-lg-5 mt-lg-5'>
+            {% crispy form %}
+        </div>
 
       <div class='col-sm-12 col-md-8 pe-2'>
         
         {% comment %} título {% endcomment %}
-        {% if request.method == 'POST' %}
           <h2 class="text-center">Proyección para {{ producto }}</h2>
           
           <ul class="nav nav-tabs justify-content-center rounded">
@@ -62,10 +68,10 @@
             </div>
           </div>
           
-        {% endif %}
           
+        </div>
       </div>
     </div>
-  </div>
+  {% endif %}
     
 {% endblock body %}

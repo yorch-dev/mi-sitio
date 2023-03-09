@@ -6,27 +6,27 @@ from crispy_forms.layout import Layout, Div, HTML, Field
 class Proyeccion(forms.Form):
 
     nombre = forms.CharField(label="Nombre proyecto", max_length=20, required=True)
-    valor = forms.IntegerField(required=True)
+    valor = forms.CharField(required=True)
     duracion = forms.FloatField(label='Plazo en años', required=True, max_value=20)
     fecha_inicio = forms.DateField(required=True, widget=forms.TextInput(attrs={'type': 'date'} ))
     ciclo_inversion = forms.IntegerField(label='Días ciclo inversión', required=True)
-    t_int_esperada = forms.FloatField(label='Tasa cambio proyectada', required=True)
-    t_int_inversion = forms.FloatField(label='Tasa interés banco', required=True)
-    precision = forms.TypedChoiceField(
-        label = "Precisión",
-        choices = ((0, "Baja"), (1, "Normal"), (2, "Alta"), (3, "Muy alta")),
-        widget = forms.RadioSelect,
-        initial = '1',
-        required=True
-    )
+    t_int_esperada = forms.CharField(label='Tasa cambio proyectada', required=True)
+    t_int_inversion = forms.CharField(label='Tasa interés banco', required=True)
+    # precision = forms.TypedChoiceField(
+    #     label = "Precisión",
+    #     choices = ((0, "Baja"), (1, "Normal"), (2, "Alta"), (3, "Muy alta")),
+    #     widget = forms.RadioSelect,
+    #     initial = '1',
+    #     required=True
+    # )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_id = 'id-exampleForm'
         self.helper.form_class = 'form-horizontal was-validated'
-        self.helper.label_class = 'col-6 text-white small h4'
-        self.helper.field_class = 'col-6'
+        self.helper.label_class = 'col-5 text-white small h4'
+        self.helper.field_class = 'col-7 text-white small h4'
         self.helper.form_method = 'post'
         #self.helper.form_action = 'submit_survey'
 
@@ -46,7 +46,7 @@ class Proyeccion(forms.Form):
                 data_bs_content='Nombre o título de tu proyecto'
             ),
             Field('valor',
-                css_class="small",
+                css_class="small input-moneda",
                 placeholder='$1.200.000',
                 autocomplete='off',
                 data_bs_toggle="popover",
@@ -55,13 +55,13 @@ class Proyeccion(forms.Form):
                 data_bs_content="Valor actual del producto o proyecto"
             ),
             Field('t_int_esperada',
-                css_class="small text-end",
-                placeholder='0.01',
+                css_class="small text-end input-porcentaje",
+                placeholder='1%',
                 autocomplete='off',
                 data_bs_toggle="popover",
                 data_bs_trigger="hover",
                 title="Tasa interés",
-                data_bs_content="Valor actual del producto o proyecto"
+                data_bs_content="Variación futura esperada mensual. (Aplica al aumento de la cuota base)"
             ),
             Field('duracion',
                 css_class="small text-end",
@@ -90,20 +90,21 @@ class Proyeccion(forms.Form):
                 data_bs_content="Duración del ciclo en días, de los depósitos a plazo"
             ),
             Field('t_int_inversion',
-                css_class="small text-end",
-                placeholder='0.007',
+                css_class="small text-end input-porcentaje",
+                placeholder='0.7%',
                 autocomplete='off',
                 data_bs_toggle="popover",
                 data_bs_trigger="hover",
                 title="Tasa interés depósito a plazo",
                 data_bs_content="Interés mensual del depósito a plazo"
             ),
-            Field('precision',
-                css_class="small",
-                data_bs_toggle="popover",
-                data_bs_trigger="hover",
-                title="Precisión del cálculo opcional",
-                data_bs_content="En plazos y altos puede afectar rendimiento, pero entrega un resultado con menos sobrante respecto de lo buscado"
-            ),
+            Div(submit, css_class='d-grid'),
+            # Field('precision',
+            #     css_class="",
+            #     data_bs_toggle="popover",
+            #     data_bs_trigger="hover",
+            #     title="Precisión del cálculo opcional",
+            #     data_bs_content="En plazos y montos altos puede afectar rendimiento, pero entrega un resultado con menos sobrante respecto de lo buscado"
+            # ),
         )
-        self.helper.layout.append(submit)
+        #self.helper.layout.append(submit)

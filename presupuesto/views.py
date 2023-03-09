@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from .funciones.fn_proyeccion_ahorro_y_dp import proyeccion_ahorro_y_dp as padp
+from .funciones.fn_formato import formatNumber
 from .funciones.fn_pie_chart import crear_pie_chart
-from datetime import date
+from datetime import datetime
 import regex as re
 from .forms import Proyeccion
 import pandas as pd
 import numpy as np
+from .funciones.fn_str_to_number import str_to_int, str_to_percent, float_to_percent
 
 # Create your views here.
 def ahorro(request):
@@ -14,24 +16,24 @@ def ahorro(request):
 
         form = Proyeccion(request.POST)
         if form.is_valid():
-            producto =form.cleaned_data['nombre']
-            valor =form.cleaned_data['valor']
+            producto = form.cleaned_data['nombre']
+            valor = str_to_int(form.cleaned_data['valor'])
             duracion = form.cleaned_data['duracion']
             fecha_inicio = form.cleaned_data['fecha_inicio']
             ciclo_inversion = form.cleaned_data['ciclo_inversion']
-            t_int_esperada = form.cleaned_data['t_int_esperada']
-            t_int_inversion = form.cleaned_data['t_int_inversion']
-            precision = form.cleaned_data['precision']
+            t_int_esperada = str_to_percent(form.cleaned_data['t_int_esperada'])
+            t_int_inversion = str_to_percent(form.cleaned_data['t_int_inversion'])
+            # precision = int(form.cleaned_data['precision'])
 
 
-            if precision == 'Baja':
-                precision = 0.001
-            elif precision == 'Alta':
-                precision = 0.00005
-            elif precision == 'Muy alta':
-                precision = 0.00001
-            else:
-                precision = 0.0001
+            # if precision == 0:
+            #     precision = 0.001
+            # elif precision == 2:
+            #     precision = 0.00005
+            # elif precision == 3:
+            #     precision = 0.00001
+            # else:
+            #     precision = 0.0001
 
             df, monto_objetivo, tasa_int_personal = padp(
                 valor_producto = valor,
@@ -40,20 +42,28 @@ def ahorro(request):
                 dias_ciclo = ciclo_inversion,
                 t_int_objetivo = t_int_esperada,
                 t_int_dp = t_int_inversion,
-                precision = 0.001
+                precision = 0.0001
             )
 
             df['Cuota invertida'] = df['Cuota invertida'].replace({True: '✔', False: '❌'})
             df['Valor cuota %'] = df['Valor cuota'] / (df['Valor cuota'] + df['Ganancia'])
             df['Ganancia %'] = df['Ganancia'] / (df['Valor cuota'] + df['Ganancia'])
             df['Acumulado'] = np.cumsum(df['Valor cuota'] + df['Ganancia'])
+            
+            pie_chart = crear_pie_chart(df)
+            
+
+            df['Valor cuota'] = np.array(list(map(lambda x: f'${formatNumber(x, 0)}', df['Valor cuota'])))
+            df['Ganancia'] = np.array(list(map(lambda x: f'${formatNumber(x, 0)}', df['Ganancia'])))
+            df['Acumulado'] = np.array(list(map(lambda x: f'${formatNumber(x, 0)}', df['Acumulado'])))
+            df['Valor cuota %'] = np.array(list(map(lambda x: float_to_percent(x), df['Valor cuota %'])))
+            df['Ganancia %'] = np.array(list(map(lambda x: float_to_percent(x), df['Ganancia %'])))
+            df['Fecha'] = np.array(list(map(lambda x: datetime.strftime(x, '%d-%m-%Y'), df['Fecha'])))
 
             df_html = df.to_html(index = False)
             clases_bstp = 'table table-dark table-striped text-center'
             clean_df_html = re.sub(r'<tr.*>', '<tr>', df_html.replace('border="1" class="dataframe', f'class="{clases_bstp}'))
             
-            pie_chart = crear_pie_chart(df)
-
             ctx = {
                 'producto' : producto,
                 'monto_objetivo' : monto_objetivo,

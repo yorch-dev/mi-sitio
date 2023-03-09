@@ -14,4 +14,14 @@ body {
     max-height: 70vh;
     overflow: auto;
     display:inline-block;
+}
+
+input:hover {
+    background-color: #18e9d7;
+}
+
+input[type="radio"] + label {
+    background-color: aliceblue;
+    width: 100%;
+    padding-left: 5%;
   }
