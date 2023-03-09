@@ -1,0 +1,43 @@
+
+<h5 class="text-white">Resumen proyecto {{nombre_producto}}</h5>
+<table class="table table-bordered text-white">
+  <thead class="bg-dark">
+    <tr>
+      <th>Concepto</th>
+      <th>Resultado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="color-ahorro">
+      <th>Total ahorro</th>
+      <td>{{total_ahorro}}</td>
+    </tr>
+    <tr class="color-ganancia">
+      <th>Total ganancia</th>
+      <td>{{total_ganancia}}</td>
+    </tr>
+  </tbody>
+  <tfoot class="bg-secondary">
+    <tr>
+      <th>Monto objetivo</th>
+      <td>{{monto_objetivo}}</th>
+    </tr>
+    <tr>
+      <th>Resultado</th>
+      <td>{{monto_total}}</td>
+    </tr>
+    <tr></tr>
+    <tr>
+      <th>Saldo</th>
+      <td>{{saldo}}</td>
+    </tr>
+    <tr>
+      <th>T Interés personal final</th>
+      <td>{{tasa_int_personal}}</td>
+    </tr>
+  </tfoot>
+</table>
+                
+{% comment %} 
+mygrid[1][0].write(f" El saldo: ${formatNumber(int((df_padp['Valor cuota'].sum() + df_padp['Ganancia'].sum()) - monto_objetivo), 0)}") 
+{% endcomment %}

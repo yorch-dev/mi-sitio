@@ -29,7 +29,7 @@
       <div class='col-sm-12 col-md-8 pe-2'>
         
         {% comment %} título {% endcomment %}
-          <h2 class="text-center">Proyección para {{ producto }}</h2>
+          <h2 class="text-center text-white">Proyección para {{ producto }}</h2>
           
           <ul class="nav nav-tabs justify-content-center rounded">
             <li class="nav-item border">
@@ -42,24 +42,27 @@
           
           <div class="tab-content">
             <div id="pie" class="container tab-pane fade show active">
-              {% comment %} pie {% endcomment %}
-              <div>
-                {% comment %} st.write(f'# *Resumen proyecto {nombre_producto}*')
-                mygrid = make_grid(2, 2)
 
-                mygrid[1][0].write(f" El objetivo es: ${formatNumber(int(monto_objetivo), 0)}")
-                mygrid[1][0].write(f" El resultado es: ${formatNumber(int(df_padp['Valor cuota'].sum() + df_padp['Ganancia'].sum()), 0)}")
-                mygrid[1][0].write("\tAcumulado con cuota personal: ${}".format(formatNumber(int(df_padp['Valor cuota'].sum()), 0)))
-                mygrid[1][0].write("\tTasa de interés ahorro personal {}%".format(round(tasa_int_personal * 100, 2)))
-                mygrid[1][0].write("\tGanancia inversión: ${}".format(formatNumber(int(df_padp['Ganancia'].sum()), 0)))
-                mygrid[1][0].write(f" El saldo: ${formatNumber(int((df_padp['Valor cuota'].sum() + df_padp['Ganancia'].sum()) - monto_objetivo), 0)}") {% endcomment %}
-              </div>
-              <div>
-                {% if pie %}
-                <img src="data:image/png;base64,{{ pie }}" alt="pie chart">
-                {% endif %}
-              </div>
+              <div class="container-fluid">
+                
+                <div class="row">
+
+                  <div class='col-12 col-md-4 pt-3'>
+                    {% include 'proyectando-ahorro/t-resumen-proyecto.html' %}
+                  </div>
+                    
+                  <div class='col-12 col-md-6'>
+                    {% comment %} pie {% endcomment %}
+                    {% if pie %}
+                      <img src="data:image/png;base64,{{ pie }}" alt="pie chart">
+                    {% endif %}
+                  </div>
+
+                </div>
+
             </div>
+          </div>
+
             <div id="df" class="container tab-pane fade show">
               {% comment %} df {% endcomment %}
               <div class="table-wrapper">

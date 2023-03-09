@@ -3,7 +3,6 @@ import io
 import base64
 import numpy as np
 from .fn_formato import formatNumber
-import matplotlib.patheffects as path_effects
 
 def func_pct(pct, allvals):
     absolute = int(round((pct/100.*np.sum(allvals)), 0))
@@ -14,12 +13,13 @@ def crear_pie_chart(df):
     fig, ax = plt.subplots()
     fig.set_facecolor('#efe6d4')
     ax.set_facecolor('#9cebd6')
+    fig.subplots_adjust(left=0, right=0.7)
 
     ax.pie(data,
         labels=['Cuotas ahorro', 'Ganancia'],
         explode=[0, 0.2],
         shadow=False,
-        startangle=120,
+        startangle=135,
         autopct=lambda pct: func_pct(pct, data),
         colors=['#d16e0a', '#099930'],
         textprops={'color':"w"},

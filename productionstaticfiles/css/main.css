@@ -20,6 +20,17 @@ input:hover {
     background-color: #18e9d7;
 }
 
+input[type="radio"] + label:hover {
+    background-color: #18e9d7;
+    font-size: 105%;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+    font-size: 105%;
+    font-weight: bold;
+}
+
 input[type="radio"] + label {
     background-color: aliceblue;
     width: 100%;
@@ -30,4 +41,12 @@ input[type="radio"] + label {
     .navbar-brand {
         display: none;
     }
+}
+
+.color-ahorro {
+    background-color: #d16e0a;
+}
+
+.color-ganancia {
+    background-color: #099930;
 }

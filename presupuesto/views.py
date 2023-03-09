@@ -45,11 +45,16 @@ def ahorro(request):
                 precision = precision_f
             )
 
+
             df['Cuota invertida'] = df['Cuota invertida'].replace({True: '✔', False: '❌'})
             df['Valor cuota %'] = df['Valor cuota'] / (df['Valor cuota'] + df['Ganancia'])
             df['Ganancia %'] = df['Ganancia'] / (df['Valor cuota'] + df['Ganancia'])
             df['Acumulado'] = np.cumsum(df['Valor cuota'] + df['Ganancia'])
             
+            monto_total = df['Acumulado'].iloc[-1]
+            total_ahorro = df['Valor cuota'].sum()
+            total_ganancia = df['Ganancia'].sum()
+            saldo = monto_total - monto_objetivo
             pie_chart = crear_pie_chart(df)
             
 
@@ -66,8 +71,12 @@ def ahorro(request):
             
             ctx = {
                 'producto' : producto,
-                'monto_objetivo' : monto_objetivo,
-                'tasa_int_personal' : tasa_int_personal,
+                'monto_objetivo' :  f'${formatNumber(int(monto_objetivo), 0)}',
+                'tasa_int_personal' : f'{round(tasa_int_personal * 100, 2)}%',
+                'monto_total' : f'${formatNumber(int(monto_total), 0)}',
+                'total_ahorro' : f'${formatNumber(int(total_ahorro), 0)}',
+                'total_ganancia' : f'${formatNumber(int(total_ganancia), 0)}',
+                'saldo' : f'${formatNumber(int(saldo), 0)}',
                 'form' : form,
                 'df' : clean_df_html,
                 'pie' : pie_chart,
