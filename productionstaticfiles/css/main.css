@@ -24,4 +24,10 @@ input[type="radio"] + label {
     background-color: aliceblue;
     width: 100%;
     padding-left: 5%;
-  }
+}
+
+@media screen and (max-width: 494px) {
+    .navbar-brand {
+        display: none;
+    }
+}
