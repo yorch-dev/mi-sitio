@@ -23,17 +23,17 @@ def ahorro(request):
             ciclo_inversion = form.cleaned_data['ciclo_inversion']
             t_int_esperada = str_to_percent(form.cleaned_data['t_int_esperada'])
             t_int_inversion = str_to_percent(form.cleaned_data['t_int_inversion'])
-            # precision = int(form.cleaned_data['precision'])
+            precision = form.cleaned_data['precision']
 
 
-            # if precision == 0:
-            #     precision = 0.001
-            # elif precision == 2:
-            #     precision = 0.00005
-            # elif precision == 3:
-            #     precision = 0.00001
-            # else:
-            #     precision = 0.0001
+            if precision == 0:
+                precision_f = 0.001
+            elif precision == 2:
+                precision_f = 0.00005
+            elif precision == 3:
+                precision_f = 0.00001
+            else:
+                precision_f = 0.0001
 
             df, monto_objetivo, tasa_int_personal = padp(
                 valor_producto = valor,
@@ -42,7 +42,7 @@ def ahorro(request):
                 dias_ciclo = ciclo_inversion,
                 t_int_objetivo = t_int_esperada,
                 t_int_dp = t_int_inversion,
-                precision = 0.0001
+                precision = precision_f
             )
 
             df['Cuota invertida'] = df['Cuota invertida'].replace({True: '✔', False: '❌'})

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
 {% crispy form form.helper %}
 
@@ -7,12 +8,11 @@
 {% endblock title %}
 
 {% block body %}
-{% load crispy_forms_tags %}
 
   {% if request.method == 'GET' %}
     <div class="container">
       <div class='row'>
-        <div class='col-7 mx-auto'>
+        <div class='col-12 col-md-8 mx-auto'>
           {% crispy form %}
         </div>
       </div>
@@ -77,5 +77,5 @@
       </div>
     </div>
   {% endif %}
-    
+  <script src={% static 'js/ahorro.js' %}></script>
 {% endblock body %}
