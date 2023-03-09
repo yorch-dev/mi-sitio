@@ -61,7 +61,7 @@ class Proyeccion(forms.Form):
                 data_bs_toggle="popover",
                 data_bs_trigger="hover",
                 title="Tasa interés",
-                data_bs_content="Variación futura esperada mensual. (Aplica al aumento de la cuota base)"
+                data_bs_content="Variación futura esperada mensual"
             ),
             Field('duracion',
                 css_class="small text-end",
@@ -70,7 +70,7 @@ class Proyeccion(forms.Form):
                 data_bs_toggle="popover",
                 data_bs_trigger="hover",
                 title="Duración del proyecto",
-                data_bs_content="Duración en años del proyecto"
+                data_bs_content="Horizonte en años del proyecto"
             ),
             Field('fecha_inicio',
                 css_class="small",

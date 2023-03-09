@@ -6,7 +6,7 @@
             Mi sitio
         </a>
         {% if user.is_authenticated %}
-          <h3 class="text-white m-auto">Sesión iniciada como: {{ user.username }} </h3>
+          <h3 class="text-white m-auto small">Sesión iniciada como: {{ user.username }} </h3>
         {% endif %}
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
         <span class="navbar-toggler-icon"></span>

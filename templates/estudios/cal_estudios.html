@@ -12,13 +12,15 @@
   <div class="container text-center">
     <h2 class="mb-2">Hoy: {{hoy | date:'l j'}} de {{hoy | date:'F'}}</h2>
     {% if temas_por_dia.0.0 not in libres %}
-      <div class="container text-start col-6">
-        <ul class="list-unstyled">
+      <div class="container d-flex justify-content-center">
+        <ul class="list-unstyled d-flex flex-column mt-2">
           {% for tema in temas_por_dia.0 %}
             {% if forloop.counter0 != 0 %}
                 {% if tema %}
-                  <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-                  <label class="form-check-label" for="firstCheckbox">Sesión {{ forloop.counter0 }}: {{ tema }}</label>
+                  <li class="list-group-item text-start">
+                    <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox-{{ forloop.counter0 }}">
+                    <label class="form-check-label" for="firstCheckbox-{{ forloop.counter0 }}">Sesión {{ forloop.counter0 }}: {{ tema }}</label>
+                  </li>
                 {% endif%}
             {% endif%}
           {% endfor %}
@@ -30,7 +32,7 @@
   </div>
 
 
-  <div class="container mt-3">
+  <div class="container mt-2">
     {% include 'estudios/tabla_temas.html' with lista_temas=temas_por_dia sesiones=n_sesiones %}
   </div>
 

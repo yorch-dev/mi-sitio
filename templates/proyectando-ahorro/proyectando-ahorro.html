@@ -11,7 +11,11 @@
 
   {% if request.method == 'GET' %}
     <div class="container">
-      {% crispy form %}
+      <div class='row'>
+        <div class='col-7 mx-auto'>
+          {% crispy form %}
+        </div>
+      </div>
     </div>
   {% endif %}
 
