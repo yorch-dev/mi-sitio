@@ -84,7 +84,7 @@ class Proyeccion(forms.Form):
             Field(
                 'ciclo_inversion',
                 css_class="small text-end",
-                placeholder='45',
+                placeholder='60',
                 autocomplete='off',
                 data_bs_toggle="popover",
                 data_bs_trigger="hover",
