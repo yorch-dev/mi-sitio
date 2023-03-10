@@ -1,0 +1,24 @@
+{% load static%}
+
+<script>
+    function showLoadingModal(){
+        loadingModal = document.getElementById('loadingModal')
+        loadingModal.style.display = 'block';
+    }
+
+    const mi_submit = document.querySelector(".show-loading-after-submit")
+    mi_submit.addEventListener('submit', showLoadingModal);
+
+</script>
+
+<div>
+    <div id="loadingModal" class="modal" style="visibility:visible; opacity: 1; display: none;">
+        <div class="modal__inner p3 center">
+            <h3 class="bg-secondary">Procesando...</h3>
+        <p class="bg-secondary">
+            Esto puede tomar unos segundos.
+        </p>
+            <img src="{% static 'img/wait.gif' %}">
+        </div>
+      </div>
+</div>

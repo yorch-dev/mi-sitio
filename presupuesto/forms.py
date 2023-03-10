@@ -26,7 +26,7 @@ class Proyeccion(forms.Form):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_id = 'id-proyeccion-form'
-        self.helper.form_class = 'form-horizontal was-validated'
+        self.helper.form_class = 'form-horizontal was-validated show-loading-after-submit'
         self.helper.label_class = 'col-5 text-white small h4'
         self.helper.field_class = 'col-7 text-white small'
         self.helper.form_method = 'post'

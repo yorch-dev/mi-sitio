@@ -21,8 +21,9 @@
     {% include 'menu/menu.html' %}
     {% block body %}
     {% endblock body %}
-
-
+    
+    
+    {% include 'partials/_loading-modal.html' %}
     <!-- Bootstrap JS -->
     <script src={% static 'js/bootstrap.bundle.min.js' %}></script>
     <script src={% static 'js/js_popover_bs.js' %}></script>
