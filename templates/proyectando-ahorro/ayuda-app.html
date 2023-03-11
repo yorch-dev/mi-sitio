@@ -1,0 +1,56 @@
+La aplicación propone un sistema de presupuesto, que se compone por un ahorro, que se depositaría en cuentas de depósito a plazo. La lógica es evitar un ahorro plano, para concretar la compra de un producto o la realización de algún proyecto de costo elevado y un horizonte de un año o más.
+
+La lógica es la siguiente:
+
+Si tenemos de proyecto tomar unas vacaciones por un monto de $1.200.000
+
+Presupuesto hoy = $1.200.000
+Plazo = 12 meses
+Cuota mensual =
+$1.200.000 / 12
+= $100.000
+
+Proyección interés mensual = 1%
+Si aplicamos un interés a la cuota de $100.000, desde el primer mes, nos queda lo siguiente:
+
+Mes	Interés = cuota anterior * interés	Valor cuota
+1	$100.000 * 1% = $1.000	$101.000
+2	$101.000 * 1% = $1.010	$102.010
+3	$102.010 * 1% = $1.020	$103.030
+4	$103.030 * 1% = $1.030	$104.060
+5	$104.060 * 1% = $1.041	$105.101
+6	$105.101 * 1% = $1.051	$106.152
+7	$106.152 * 1% = $1.062	$107.214
+8	$107.214 * 1% = $1.072	$108.286
+9	$108.286 * 1% = $1.083	$109.369
+10	$109.369 * 1% = $1.094	$110.462
+11	$110.462 * 1% = $1.105	$111.567
+12	$111.567 * 1% = $1.116	$112.683
+	
+
+El objetivo es tener luego de 1 año, un total de $1.280.993, lo que en cuotas fijas serían $106.744.
+Entonces, considerando el aumento en el costo, no se puede proyectar $100.000, sino $106.744 cuotas fijas para tener en 1 año el total para el proyecto, o su equivalente según la tabla anterior.
+
+Lo que se busca es, por lo tanto, disminuir la cuota mensual, al depositar las cuotas a ahorrar en depósitos a plazo, que equilibren el aumento del costo esperado.
+
+Ejemplo primera cuota (cada cuota pasa por su propio proceso, aunque las últimas no se incluyen si terminan más allá del horizonte propuesto para el proyecto):
+Interés depósito = 0.7% mensual (he visto llegar a 0.95%, hay que revisar opciones)
+Plazo = 60 días
+
+Ciclo	Mes	Invertido	Rescate en 60 días
+1	1	$101.000 * 0.7%	$102.414
+2	3	$102.414 * 0.7%	$103.848
+3	5	$103.848 * 0.7%	$105.302
+4	7	$105.302 * 0.7%	$106.772
+5	9	$106.772 * 0.7%	$108.271
+	11	No se considera ya que retrasaría el inicio del proyecto.
+
+Esto es un proceso automático luego del depósito y, solamente habría que realizar el rescate en el mes 11 al finalizar el quinto ciclo.
+Si se realiza este proceso con los montos calculados en la primera tabla (comenzando con $101.000), sobrepasamos el objetivo de $1.280.993, calculado por ese 1% de interés esperado. Y si solamente depositamos $100.000 mensuales, es probable no se ajuste al final (aunque por supuesto ya ayudaría).
+
+Hemos visto el ciclo de una cuota, pero el cálculo es más complejo y para cada cuota de cada mes desde el inicio, variando según interés, duración de los ciclos y estimar el ajuste al objetivo al fin del proceso...
+Y esto es lo que realiza la aplicación, buscando el objetivo según el interés esperado calcula el monto de la cuota inicial y su nuevo interés objetivo, lo demás lo suman las ganancias en los depósitos.
+
+En los valores referenciales se plantean los descritos como guía en el formulario, generando una ganancia de casi $38.000, disminuyendo con eso el interés esperado de 1% a 0.56%. Puede ser o no relevante a primera vista, pero duplica el monto para un horizonte de 2 años con los mismos otros valores y queda una ganancia por los depósitos de $200.000, bajando a 0.45 el interés esperado.
+
+Se puede entonces considerar como proyección: cambiar un living, un refrigerador, realizar una ampliación o remodelación, para vacaciones como en el ejemplo, etc.
