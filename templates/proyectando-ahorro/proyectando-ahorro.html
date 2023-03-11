@@ -10,34 +10,58 @@
 {% block body %}
 
   <div>
-    <h1 class="text-center text-white">Proyección ahorro con depósito a plazo</h1>
-  <div>
-
+    <div class="float-end">
+      {% if request.method == 'GET' %}
+        <button id="btn-ayuda" class="me-3">Guía</button>
+      {% endif %}
+    </div>
+    <h1 class="text-white text-center">Proyección ahorro con depósito a plazo</h1>
+  </div>
+  
   {% if request.method == 'POST' %}
     <div class="d-flex justify-content-center">
       <h2 class="d-flex text-white bg-dark">Proyección para {{ producto }}</h2>
     </div>
   {% endif %}
-
   
-  <div class="container-fluid px-1">
-    <div class='row'>
-      <div class='col-12 col-lg-4 pt-2 pt-lg-5'>
-        {% crispy form %}
+  {% if request.method == 'GET' %}
+    <div id="contenedor-ayuda-1">
+      <div id="contenedor-ayuda-2">
+        <div id="contenedor-crispy" class='container col-10 col-md-7 pt-2'>
+          {% crispy form %}
+        </div>
+
+        <div id="contenedor-ayuda-tab" style="display: none;">
+          <div class='col-12 col-lg-8'>
+            <ul class="nav nav-tabs justify-content-center rounded">
+              <li class="nav-item border">
+                <a class="nav-link text-white active" data-bs-toggle="pill" href="#ayuda">Ayuda</a>
+              </li>
+            <ul>
+            <div class="tab-content">
+              <div id="ayuda" class="container tab-pane fade show">
+                <div class="container-fluid table-wrapper">
+                  {% include 'proyectando-ahorro/ayuda-app.html' %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+  
+  {% endif %}
+  
+  {% if request.method == 'POST' %}
+    <div class="container-fluid px-1">
+      <div class='row'>
+        <div class='col-12 col-lg-4 pt-2 pt-lg-5'>
+          {% crispy form %}
+        </div>
+
+        <div class='col-12 col-lg-8'>
+          <ul class="nav nav-tabs justify-content-center rounded">
       
-      <div class='col-12 col-lg-8'>
-        <ul class="nav nav-tabs justify-content-center rounded">
-
-          {% if request.method == 'GET' %}
-
-            <li class="nav-item border">
-              <a class="nav-link text-white active" data-bs-toggle="pill" href="#ayuda">Ayuda</a>
-            </li>
-
-          {% endif %}
-
-          {% if request.method == 'POST' %}
             <li class="nav-item border">
               <a class="nav-link text-white active" data-bs-toggle="pill" href="#pie">Resumen</a>
             </li>
@@ -45,63 +69,53 @@
               <a class="nav-link text-white" data-bs-toggle="pill" href="#df">Tabla</a>
             </li>
             <li class="nav-item border">
-              <a class="nav-link text-white" data-bs-toggle="pill" href="#ayuda">Ayuda</a>
+              <a class="nav-link text-white" data-bs-toggle="pill" href="#ayuda">Guía</a>
             </li>
-          {% endif %}
-
-        </ul>
-        
-        <div class="tab-content">
-
-          {% if request.method == 'GET' %}
-            <div id="pie" class="container-fluid tab-pane fade show">
-          {% else %}
-            <div id="pie" class="container-fluid tab-pane fade show active">
-          {% endif %}
-            <div class="container-fluid">
-              <div class="row justify-content-center">
-                <div class='col-12 col-md-4 pt-3'>
-                  {% include 'proyectando-ahorro/t-resumen-proyecto.html' %}
-                </div>
                   
-                <div class='col-12 col-md-6'>
-                  {% comment %} pie {% endcomment %}
-                  {% if pie %}
-                    <img src="data:image/png;base64,{{ pie }}" alt="pie chart">
-                  {% endif %}
+          </ul>
+                
+          <div class="tab-content">
+                  
+            <div id="pie" class="container-fluid tab-pane fade show active">
+              <div class="container-fluid">
+                <div class="row justify-content-center">
+                  <div class='col-12 col-md-4 pt-3'>
+                    {% include 'proyectando-ahorro/t-resumen-proyecto.html' %}
+                  </div>
+                        
+                  <div class='col-12 col-md-6'>
+                    {% if pie %}
+                      <img src="data:image/png;base64,{{ pie }}" alt="pie chart">
+                    {% endif %}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          
-          <div id="df" class="container-fluid text-center tab-pane fade show">
-            {% comment %} df {% endcomment %}
-            <div class="table-wrapper">
-              {% if df %}
+                  
+            <div id="df" class="container-fluid text-center tab-pane fade show">
+              {% comment %} df {% endcomment %}
+              <div class="table-wrapper">
+                {% if df %}
                 {% autoescape off %}
-                  {{ df }}
+                {{ df }}
                 {% endautoescape %}
-              {% endif %}
+                {% endif %}
+              </div>
             </div>
-          </div>
-          
-          {% if request.method == 'GET' %}
-            <div id="ayuda" class="container tab-pane fade show active">
-          {% else %}
+                  
             <div id="ayuda" class="container tab-pane fade show">
-          {% endif %}
-
-            <div class="container-fluid">
               
-              {% include 'proyectando-ahorro/ayuda-app.html' %}
-
+              <div class="container-fluid table-wrapper">
+                
+                {% include 'proyectando-ahorro/ayuda-app.html' %}
+                
+              </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
-  </div>
-
+  {% endif %}
   <script src={% static 'js/ahorro.js' %}></script>
 {% endblock body %}
+            

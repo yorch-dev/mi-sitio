@@ -56,15 +56,6 @@ class Proyeccion(forms.Form):
                 title="Valor actual",
                 data_bs_content="Valor actual del producto o proyecto"
             ),
-            Field('t_int_esperada',
-                css_class="input-porcentaje text-end",
-                placeholder='1%',
-                autocomplete='off',
-                data_bs_toggle="popover",
-                data_bs_trigger="hover",
-                title="Tasa interés",
-                data_bs_content="Variación futura esperada mensual"
-            ),
             Field('duracion',
                 css_class="text-end",
                 placeholder='1',
@@ -73,6 +64,15 @@ class Proyeccion(forms.Form):
                 data_bs_trigger="hover",
                 title="Duración del proyecto",
                 data_bs_content="Horizonte en años del proyecto"
+            ),
+            Field('t_int_esperada',
+                css_class="input-porcentaje text-end",
+                placeholder='1%',
+                autocomplete='off',
+                data_bs_toggle="popover",
+                data_bs_trigger="hover",
+                title="Tasa interés",
+                data_bs_content="Variación futura esperada mensual"
             ),
             Field('fecha_inicio',
                 css_class="text-end",
