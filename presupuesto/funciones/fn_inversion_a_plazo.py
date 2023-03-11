@@ -38,7 +38,7 @@ def inversion_a_plazo(monto_invertido, fecha_inicial, dias, t_int = 0.007, capit
         #Revisión de fechas
         fecha_ingreso = np.append(fecha_ingreso, fecha_inversion)
         fecha_rescate = np.append(fecha_rescate, fin_periodo)
-        fecha_inversion = fin_periodo + dt.timedelta(3)
+        fecha_inversion = fin_periodo + dt.timedelta(1)
         fin_periodo = fecha_inversion + dt.timedelta(dias)
 
         #Revisión de montos

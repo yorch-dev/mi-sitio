@@ -27,19 +27,19 @@ class Proyeccion(forms.Form):
         self.helper = FormHelper()
         self.helper.form_id = 'id-proyeccion-form'
         self.helper.form_class = 'form-horizontal was-validated show-loading-after-submit'
-        self.helper.label_class = 'col-5 text-white small h4'
-        self.helper.field_class = 'col-7 text-white small'
+        self.helper.label_class = 'col-6 text-white text-start'
+        self.helper.field_class = 'col-6'
         self.helper.form_method = 'post'
         #self.helper.form_action = 'submit_survey'
 
         submit = Submit("submit", "Enviar")
-        submit.field_classes = 'btn btn-dark float-end'
+        submit.field_classes = 'btn btn-dark'
 
         #self.helper.add_input(submit)
 
         self.helper.layout = Layout(
             Field('nombre',
-                css_class="small text-end",
+                css_class="text-end",
                 placeholder='Vacaciones',
                 autocomplete='off',
                 data_bs_toggle="popover",
@@ -48,7 +48,7 @@ class Proyeccion(forms.Form):
                 data_bs_content='Nombre o título de tu proyecto'
             ),
             Field('valor',
-                css_class="small input-moneda text-end",
+                css_class="input-moneda text-end",
                 placeholder='$1.200.000',
                 autocomplete='off',
                 data_bs_toggle="popover",
@@ -57,7 +57,7 @@ class Proyeccion(forms.Form):
                 data_bs_content="Valor actual del producto o proyecto"
             ),
             Field('t_int_esperada',
-                css_class="small text-end input-porcentaje",
+                css_class="input-porcentaje text-end",
                 placeholder='1%',
                 autocomplete='off',
                 data_bs_toggle="popover",
@@ -66,7 +66,7 @@ class Proyeccion(forms.Form):
                 data_bs_content="Variación futura esperada mensual"
             ),
             Field('duracion',
-                css_class="small text-end",
+                css_class="text-end",
                 placeholder='1',
                 autocomplete='off',
                 data_bs_toggle="popover",
@@ -75,7 +75,7 @@ class Proyeccion(forms.Form):
                 data_bs_content="Horizonte en años del proyecto"
             ),
             Field('fecha_inicio',
-                css_class="small text-end",
+                css_class="text-end",
                 data_bs_toggle="popover",
                 data_bs_trigger="hover",
                 title="Fecha inicio",
@@ -83,7 +83,7 @@ class Proyeccion(forms.Form):
             ),
             Field(
                 'ciclo_inversion',
-                css_class="small text-end",
+                css_class="text-end",
                 placeholder='60',
                 autocomplete='off',
                 data_bs_toggle="popover",
@@ -92,7 +92,7 @@ class Proyeccion(forms.Form):
                 data_bs_content="Duración del ciclo en días, de los depósitos a plazo"
             ),
             Field('t_int_inversion',
-                css_class="small text-end input-porcentaje",
+                css_class="input-porcentaje text-end",
                 placeholder='0.7%',
                 autocomplete='off',
                 data_bs_toggle="popover",
