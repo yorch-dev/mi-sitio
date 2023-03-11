@@ -8,8 +8,9 @@ from .forms import Proyeccion
 import pandas as pd
 import numpy as np
 from .funciones.fn_str_to_number import str_to_int, str_to_percent, float_to_percent
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+@login_required()
 def ahorro(request):
 
     if request.method == 'POST':

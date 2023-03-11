@@ -8,11 +8,16 @@
 {% endblock title %}
 
 {% block body %}
+<link rel="stylesheet" href={% static 'css/ahorro.css' %}>
 
   <div>
     <div class="float-end">
       {% if request.method == 'GET' %}
-        <button id="btn-ayuda" class="me-3">Guía</button>
+        {% comment %} <button id="btn-ayuda" class="me-3">Guía</button> {% endcomment %}
+        <a id="btn-ayuda" class="btn btn-primary me-3">Guía</a>
+        <a href="{% url 'ahorro' %}" id="btn-reinicio" class="btn btn-primary me-3">Reiniciar</a>
+      {% else %}
+        <a href="{% url 'ahorro' %}" id="btn-reinicio" class="btn btn-primary me-3">Reiniciar</a>
       {% endif %}
     </div>
     <h1 class="text-white text-center">Proyección ahorro con depósito a plazo</h1>
@@ -27,26 +32,26 @@
   {% if request.method == 'GET' %}
     <div id="contenedor-ayuda-1">
       <div id="contenedor-ayuda-2">
+
         <div id="contenedor-crispy" class='container col-10 col-md-7 pt-2'>
           {% crispy form %}
         </div>
 
-        <div id="contenedor-ayuda-tab" style="display: none;">
-          <div class='col-12 col-lg-8'>
-            <ul class="nav nav-tabs justify-content-center rounded">
-              <li class="nav-item border">
-                <a class="nav-link text-white active" data-bs-toggle="pill" href="#ayuda">Ayuda</a>
-              </li>
-            <ul>
-            <div class="tab-content">
-              <div id="ayuda" class="container tab-pane fade show">
-                <div class="container-fluid table-wrapper">
-                  {% include 'proyectando-ahorro/ayuda-app.html' %}
-                </div>
+        <div id="contenedor-ayuda-tab" style="display: none;" class='col-12 col-lg-8'>
+          <ul class="nav nav-tabs justify-content-center rounded">
+            <li class="nav-item">
+              <a class="nav-link text-white active" data-bs-toggle="pill" href="#ayuda">Guía</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div id="ayuda" class="container tab-pane show active">
+              <div class="table-wrapper">
+                {% include 'proyectando-ahorro/ayuda-app.html' %}
               </div>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   

@@ -46,7 +46,7 @@ inputs_porcentaje.forEach((mi_input) => {
 function setRadioPrecisionAttributes() {
   const radio_precision = document.querySelector("#div_id_precision > div");
   const t_mensaje = "Precisión del cálculo opcional"
-  const mensaje = 'En plazos extensos afecta al tiempo de respuesta. Una mayor precisión, entrega un resultado más ajustado a lo buscado. (Se recomienda usa "Alta" y "Muy alta", solamente para afinar el presupuesto final)'
+  const mensaje = 'En plazos extensos afecta al tiempo de respuesta. Una mayor precisión, entrega un resultado más ajustado a lo buscado. (Se recomienda usar "Alta" y "Muy alta", solamente para afinar el presupuesto final)'
     radio_precision.setAttribute("data-bs-toggle", "popover")
     radio_precision.setAttribute("data-bs-trigger", "hover")
     radio_precision.setAttribute("data-bs-original-title", t_mensaje)
@@ -65,5 +65,5 @@ boton_ayuda.addEventListener("click", function() {
   cont_ayuda_1.className = "container-fluid px-1";
   cont_ayuda_2.className = "row";
   cont_crispy.className = "col-12 col-lg-4 pt-2 pt-lg-5";
-  cont_tab.style.display = "block";
+  cont_tab.style.display = "initial";
 });
