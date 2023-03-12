@@ -20,7 +20,8 @@ def crear_pie_chart(df):
         explode=[0, 0.2],
         shadow=False,
         startangle=135,
-        autopct=lambda pct: func_pct(pct, data),
+        #autopct=lambda pct: func_pct(pct, data),
+        autopct="%0.1f%%",
         colors=['#d16e0a', '#099930'],
         textprops={'color':"w"},
         wedgeprops={'linewidth': 3.0, 'edgecolor': 'black'}
