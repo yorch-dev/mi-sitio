@@ -24,16 +24,26 @@
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-
+            
             {% if user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'estudios' %}">Calendario estudios</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'ahorro' %}">Proyección ahorro</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Aplicaciones
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'estudios' %}">Calendario estudios</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'ahorro' %}">Proyección ahorro</a>
+                  </li>
+                </ul>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,21 +51,22 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   {% if user.is_authenticated and user.is_staff %}
-                    <li><a class="dropdown-item" href="/admin/">Admin</a></li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/admin/">Admin</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'password_reset' %}">Reenvío de contraseña</a>
+                    </li>
+                  {% else %}
+                    <li class="nav-item">
+                      <a class="nav-link disabled" href="/admin/">Admin</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link disabled" href="{% url 'password_reset' %}">Reenvío de contraseña</a>
+                    </li>
                   {% endif %}
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" href="{% url 'password_reset' %}">Reenvío de contraseña</a></li>
                 </ul>
               </li>
-            {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'password_reset' %}">Reenvío de contraseña</a>
-            </li>
             {% endif %}
 
           </ul>

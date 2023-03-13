@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href={% static 'css/estudios.css' %}>
+{% endblock css %}
 
 {% block title %}
     Calendario estudios
 {% endblock title %}
 
 {% block body %}
-
-<div class="container text-center"><h1>Calendario estudios</h1></div>
+<div class="container text-center text-white"><h1>Calendario estudios</h1></div>
 
 {% if temas_por_dia %}
   <div class="container text-center">
-    <h2 class="mb-2">Hoy: {{hoy | date:'l j'}} de {{hoy | date:'F'}}</h2>
+    <h2 class="mb-2 text-white">Hoy: {{hoy | date:'l j'}} de {{hoy | date:'F'}}</h2>
     {% if temas_por_dia.0.0 not in libres %}
       <div class="container d-flex justify-content-center">
         <ul class="list-unstyled d-flex flex-column mt-2">
@@ -19,7 +23,7 @@
                 {% if tema %}
                   <li class="list-group-item text-start">
                     <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox-{{ forloop.counter0 }}">
-                    <label class="form-check-label" for="firstCheckbox-{{ forloop.counter0 }}">Sesión {{ forloop.counter0 }}: {{ tema }}</label>
+                    <label class="form-check-label text-white" for="firstCheckbox-{{ forloop.counter0 }}">Sesión {{ forloop.counter0 }}: {{ tema }}</label>
                   </li>
                 {% endif%}
             {% endif%}

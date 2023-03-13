@@ -3,12 +3,15 @@
 {% load crispy_forms_tags %}
 {% crispy form form.helper %}
 
+{% block css %}
+  <link rel="stylesheet" href={% static 'css/ahorro.css' %}>
+{% endblock css %}
+
 {% block title %}
   Proyectando ahorro
 {% endblock title %}
 
 {% block body %}
-<link rel="stylesheet" href={% static 'css/ahorro.css' %}>
 
   <div>
     <div class="float-end">
