@@ -1,5 +1,5 @@
 .height-wrapper {
-    height: 53vh;
+    height: calc(60vh - 1.8rem);
     overflow: auto;
     display:block;
 }
@@ -7,8 +7,8 @@
 .cont-width {
     min-width: 60vw;
     max-width: 60vw;
-    min-height: 70vh;
-    max-height: 70vh;
+    min-height: 65vh;
+    max-height: 65vh;
 }
 
 .nav-tabs .nav-link {
@@ -27,9 +27,20 @@
 
 .cont-inicio {
     background-color: rgba(255, 255, 255, 0.85);
-    border: 2rem solid #212529;
+    border: 1.5rem solid #212529;
 }
 
 .cont-inicio-tab {
     background-color: #adb5bd;
 }
+
+a i {
+    display: inline-block; /* convierte el ícono en un bloque en línea */
+    font-size: 1.5rem; /* aumenta el tamaño del ícono */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  a i:hover {
+    transform: scale(1.5); /* escala el ícono a un 150% de su tamaño original */
+  }
+  
