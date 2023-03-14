@@ -14,17 +14,27 @@
 {% block body %}
 
   <div>
-    <div class="float-end">
-      {% if request.method == 'GET' %}
-        {% comment %} <button id="btn-ayuda" class="me-3">Guía</button> {% endcomment %}
-        <a id="btn-ayuda" class="btn btn-primary me-3">Guía</a>
-        <a href="{% url 'ahorro' %}" id="btn-reinicio" class="btn btn-primary me-3">Reiniciar</a>
-      {% else %}
-        <a href="{% url 'ahorro' %}" id="btn-reinicio" class="btn btn-primary me-3">Reiniciar</a>
-      {% endif %}
+    <div class="container">
+      <div class="row">
+        <div class="col text-end">
+          {% if request.method == 'GET' %}
+            <div class="float-end">
+              <div id="boton-ayuda-wrapper">
+                <a id="boton-ayuda" class="btn btn-primary me-2 d-flex flex-column">Guía</a>
+              </div>
+              <a href="{% url 'ahorro' %}" id="btn-reinicio" class="btn btn-primary me-2 d-flex flex-column">Reiniciar</a>
+            </div>
+          {% else %}
+            <div class="float-end mt-3">
+              <a href="{% url 'ahorro' %}" id="btn-reinicio" class="btn btn-primary me-2 d-flex flex-column">Reiniciar</a>
+            </div>
+          {% endif %}
+          <h1 class="text-white text-center">Proyección ahorro con depósito a plazo</h1>
+        </div>
+      </div>
     </div>
-    <h1 class="text-white text-center">Proyección ahorro con depósito a plazo</h1>
   </div>
+  <div>
   
   {% if request.method == 'POST' %}
     <div>
@@ -41,7 +51,7 @@
         </div>
 
         <div id="contenedor-ayuda-tab" style="display: none;" class='col-12 col-lg-8'>
-          <ul class="nav nav-tabs justify-content-center rounded">
+          <ul id="ul-de-ayuda" class="nav nav-tabs justify-content-center rounded">
             <li class="nav-item">
               <a class="nav-link text-white active" data-bs-toggle="pill" href="#ayuda">Guía</a>
             </li>

@@ -54,16 +54,21 @@ function setRadioPrecisionAttributes() {
   }
 setRadioPrecisionAttributes();
 
-const boton_ayuda = document.querySelector("#btn-ayuda");
+const boton_ayuda = document.querySelector("#boton-ayuda");
 const cont_ayuda_1 = document.querySelector("#contenedor-ayuda-1");
 const cont_ayuda_2 = document.querySelector("#contenedor-ayuda-2");
 const cont_crispy = document.querySelector("#contenedor-crispy");
 const cont_tab = document.querySelector("#contenedor-ayuda-tab");
+const btn_ayuda_wrapper = document.querySelector("#boton-ayuda-wrapper");
 
 boton_ayuda.addEventListener("click", function() {
-  boton_ayuda.style.display = "none";
+  btn_ayuda_wrapper.style.display = "none";
   cont_ayuda_1.className = "container-fluid px-1";
   cont_ayuda_2.className = "row";
   cont_crispy.className = "col-12 col-lg-4 pt-2 pt-lg-5";
   cont_tab.style.display = "initial";
+  window.scroll({
+    top: cont_tab.offsetTop,
+    behavior: 'smooth'
+  })
 });

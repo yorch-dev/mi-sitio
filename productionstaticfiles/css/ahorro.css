@@ -33,12 +33,6 @@ input[type="radio"] + label {
     padding-left: 5%;
 }
 
-@media screen and (max-width: 494px) {
-    .navbar-brand {
-        display: none;
-    }
-}
-
 .color-ahorro {
     background-color: #d16e0a;
 }

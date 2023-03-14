@@ -1,3 +1,9 @@
 body {
     padding-top: 65px;
 }
+
+@media screen and (max-width: 494px) {
+    .navbar-brand {
+        display: none;
+    }
+}
