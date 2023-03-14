@@ -1,57 +1,77 @@
-<ul class="nav nav-tabs justify-content-center sticky-top" role="tablist">
+<ul class="nav nav-tabs justify-content-center sticky-top cont-inicio-tab" role="tablist">
   <li class="nav-item" role="presentation">
-    <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-1" type="button" role="tab" aria-controls="tab-1" aria-selected="true">tab-1</button>
+    <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-1" type="button" role="tab" aria-controls="tab-1" aria-selected="true">Sitio en general</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-2" type="button" role="tab" aria-controls="tab-2" aria-selected="false">tab-2</button>
+    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-2" type="button" role="tab" aria-controls="tab-2" aria-selected="false">Calendario estudios</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-3" type="button" role="tab" aria-controls="tab-3" aria-selected="false">tab-2</button>
+    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-3" type="button" role="tab" aria-controls="tab-3" aria-selected="false">Proyección ahorro</button>
   </li>
 </ul>
 <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade show active height-wrapper" id="tab-1" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-    <div class="container p-3 border border-3">
-      <h1 class="float-end">hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
+    <div class="container p-3">
+      <p>
+        Lo primero es el lograr realizar un proceso completo, desde las configuraciones base, hasta el despliegue del proyecto, siendo en este caso, con PythonAnywhere como host. <br>
+        Utilizo Git y Github durante el proceso de desarrollo, en un repositorio privado.
+      </p>
+      <p>
+        Trabajando con una plantilla base, configurados los archivos estáticos (javascript, css, bootstrap), junto a los bloques que serán usados por los demás templates.
+      </p>
+      <p>
+        Realizo configuración y creación de plantillas de login y restablecimiento de contraseñas, además de la configuración de envío de correo para este efecto.
+      </p>
+      <p>
+        Trabajo en un entorno virtual, e incluyo archivo "requirements.txt" con las librerías django, whitenoise, django-crispy-forms, matplotlib, y pandas.
+      </p>
+      <p>
+        He desarrollado 2 apps, siendo una un calendario de estudios y otra un sistema de proyección de ahorro, apps que explico en las otras pestañas y que se habilitan en el menú al iniciar sesión.
+      </p>
     </div>
   </div>
   <div class="tab-pane fade show height-wrapper" id="tab-2" role="tabpanel" aria-labelledby="tab-2-tab" tabindex="0">
-    <div class="container">
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
+    <div class="container p-3">
+      <p>
+        Se trata de un sistema de estudio que vengo aplicando desde hace un tiempo, que no es tradicional en su estructura.
+      </p>
+      <p>
+        El sistema plantea ciclos de 10 días y al no acomodarse a una agenda semanal normal, lo hice una aplicación. Cada día, simplemente actualizo el navegador y tengo a la vista las sesiones de estudio que me corresponden y a la vista lo que viene.
+      </p>
+      <p>
+        Para la gestión de las sesiones, he creado el modelo y lo he registrado en admin, en donde puedo hacer las modificaciones según lo necesite, quedando los temas de forma persistente en la base de datos.
+      </p>
+      <p>
+        La lógica para el procesado del calendario, extrae los temas de la base, y los cicla de acuerdo a su día y sesión, dada una fecha de inicio, que también es un modelo que gestiono desde admin.
+      </p>
+      <p>
+        La ventaja que veo en este sistema, es que me ayuda a resolver la distribución de los diversos conocimientos que debo desarrollar y darle seguimiento, con mejores agrupaciones de los que me da un sistema de 7 días.
+      </p>
     </div>
   </div>
   <div class="tab-pane fade show height-wrapper" id="tab-3" role="tabpanel" aria-labelledby="tab-3-tab" tabindex="0">
-    <div class="container">
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
-      <h1>hola</h1>
+    <div class="container p-3">
+      <p>
+        Es una propuesta de proyección de ahorro con depósito a plazo de las cuotas de ese ahorro. <br>
+        La aplicación considera que hay un cambio (por lo general un aumento) en el costo futuro, y ahorrar para completar un proyecto, debe considerar la tasa de interés. Pero si las cuotas de ese ahorro, también generan ganancia al depositarlas, podemos ahorrar menos que el costo total, sumadas las ganancias. En la aplicación hay una guía, que explica con más detalle.
+      </p>
+      <p>
+        En esta app, utilizo varias herramientas para su funcionamiento: <br>
+      </p>
+      <ul>
+        <li>
+          El formulario está trabajado con la librería crispy-forms, y desarrollo todo el formulario desde forms.py, en donde configuro los placeholders, los popover de bootstrap y algunas clases para uso con javascript.
+        </li>
+        <li>
+          Con javascript, modifico formatos para moneda y tasa de interés con Intl.NumberFormat, buscando enviar siempre el formato adecuado al backend. También gestiono la acción del botón de guía, para permitir la visualización del panel de ayuda.
+        </li>
+        <li>
+          Bootstrap para la distribución de la página, algo de css. Además de incluir un modal para el tiempo de espera mientras se procesa el cálculo.
+        </li>
+        <li>
+          Para la lógica, utilizo las librerías Pandas, Numpy y Matplotlib.
+        </li>
+      </ul>
     </div>
   </div>
 </div>
