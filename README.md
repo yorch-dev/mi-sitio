@@ -1,4 +1,4 @@
-# mi-sitio http://jltmdev.pythonanywhere.com
+# mi-sitio/portfolio http://jltmdev.pythonanywhere.com
 
 ## Proyecto/Portfolio en Django
 
