@@ -1,6 +1,5 @@
-# mi-sitio/portfolio http://jltmdev.pythonanywhere.com
-
-## Proyecto/Portfolio en Django
+# Proyecto/Portfolio en Django
+#### http://jltmdev.pythonanywhere.com
 
 * Trabajo inicialmente en la autenticación, con accesos en el menú según se está logeado o no y si es staff para acceso administrativo.
 * Incluyo correo, para trabajo de recuperación de contraseña.
