@@ -139,8 +139,8 @@ LOGIN_REDIRECT_URL = "inicio"
 LOGOUT_REDIRECT_URL = "inicio"
 LOGIN_URL = 'login'
 
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "jltm.dev@gmail.com"
-EMAIL_HOST_PASSWORD = 'soptclnmoevobonx'
-EMAIL_PORT = 587
+EMAIL_HOST = "########"
+EMAIL_HOST_USER = "########"
+EMAIL_HOST_PASSWORD = '#####'
+EMAIL_PORT = ###
 EMAIL_USE_TLS = True
